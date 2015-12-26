@@ -27,7 +27,7 @@ module ImageClipper
 				Geometry.new("#{(geometry.width * percent).round}x#{(geometry.height * percent).round}")
 			end
 
-			`convert #{path} -resize '#{geo.width}x#{geo.height}' #{new_file_path}`
+			`convert "#{path}" -resize '#{geo.width}x#{geo.height}' #{new_file_path}`
 
 			Image.new(new_file_path)
 		end
@@ -83,7 +83,7 @@ module ImageClipper
 
 			# process!
 			# ap "convert #{path} -draw \"image SrcOver #{pos_coord} #{watermark_geo} #{watermark_path}\" #{watermarked_path}"
-			`convert #{path} -draw "image SrcOver #{pos_coord} #{watermark_geo} #{watermark_path}" #{watermarked_path}`
+			`convert "#{path}" -draw "image SrcOver #{pos_coord} #{watermark_geo} #{watermark_path}" "#{watermarked_path}"`
 			
 			# return the new Image object
 			Image.new(watermarked_path)
