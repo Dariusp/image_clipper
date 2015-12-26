@@ -27,7 +27,7 @@ module ImageClipper
 				Geometry.new("#{(geometry.width * percent).round}x#{(geometry.height * percent).round}")
 			end
 
-			`convert "#{path}" -resize '#{geo.width}x#{geo.height}' #{new_file_path}`
+			`convert "#{path}" -resize '#{geo.width}x#{geo.height}' "#{new_file_path}"`
 
 			Image.new(new_file_path)
 		end
