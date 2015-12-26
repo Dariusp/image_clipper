@@ -12,10 +12,10 @@ module ImageClipper
 		def initialize(file_path)
 			@file = File.open(file_path)
 			@path = file_path
-			attributes = `identify "#{file_path}"`.split(' ')
-			@type = attributes[1]
-			@geometry = Geometry.new(attributes[2])
-			@file_size = attributes[6]
+			attributes = `identify -format "%m %wx%h %b" "#{file_path}"`.split(' ')
+			@type = attributes[0]
+			@geometry = Geometry.new(attributes[1])
+			@file_size = attributes[2]
 		end
 
 		def resize(new_size, new_file_path = self.path)
